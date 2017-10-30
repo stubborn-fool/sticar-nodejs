@@ -66,6 +66,8 @@ nav form button[type="submit"]:hover {
     border-top: 0;
 }
 
+.highlight { background-color: yellow }
+
 footer {
     background-color: #36D7B7;
 }

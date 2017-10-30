@@ -50,4 +50,6 @@ $(document).ready(function() {
 
         return false
     })
+
+    $('#searchNews .list-group a').highlight($('#searchNews h3').attr('data-id'))
 })
