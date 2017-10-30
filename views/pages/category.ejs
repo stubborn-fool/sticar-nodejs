@@ -1,0 +1,23 @@
+<% layout('../layouts/app') -%>
+
+<div id="category" class="container py-5">
+    <div class="align-middle d-flex w-100 justify-content-between mb-3 head">
+        <h3 class="m-0">List Category!</h3>
+        <div class="btn-group" role="group">
+            <a class="btn btn-primary btn-sm" href="/category/create" role="button">Create</a>
+        </div>
+    </div>
+    <div class="list-group">
+        <% if (category.length > 0) { %>
+            <% for (var i = 0; i < category.length; i++) { %>
+                <a href="/category/get?id=<%= category[i]._id %>" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <p class="m-0"><%= category[i].name %></p>
+                    </div>
+                </a>
+            <% } %>
+        <% } else { %>
+            <p class="text-center">- No Category! -</p>
+        <% } %>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<% layout('../layouts/app') -%>
+
+<div id="createCategory" class="container py-5">
+    <div class="align-middle d-flex w-100 justify-content-between mb-3 head">
+        <h3 class="m-0">Create Category!</h3>
+        <div class="btn-group" role="group">
+            <a class="btn btn-danger btn-sm" href="/category" role="button">Back</a>
+        </div>
+    </div>
+    <form id="createCategoryForm" method="POST" action="/category/create">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" name="name" required>
+        </div>
+        <button role="button" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+<% layout('../layouts/app') -%>
+
+<div id="news" class="container py-5">
+    <div class="align-middle d-flex w-100 justify-content-between mb-3 head">
+        <h3 class="m-0">List News!</h3>
+        <div class="btn-group" role="group">
+            <a class="btn btn-primary btn-sm" href="/news/create" role="button">Create</a>
+        </div>
+    </div>
+    <div class="list-group">
+        <% if (news.length > 0) { %>
+            <% for (var i = 0; i < news.length; i++) { %>
+                <a href="/news/get?id=<%= news[i]._id %>" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1"><u><%= news[i].title %></u></h5>
+                        <small>3 days ago</small>
+                    </div>
+                    <p class="mb-1"><%= news[i].description %></p>
+                </a>
+            <% } %>
+        <% } else { %>
+            <p class="text-center">- No News! -</p>
+        <% } %>
+    </div>
+</div>

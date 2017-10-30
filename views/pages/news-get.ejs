@@ -1,0 +1,39 @@
+<% layout('../layouts/app') -%>
+
+<div id="getNews" class="container py-5">
+    <div class="align-middle d-flex w-100 justify-content-between mb-3 head">
+        <h3 class="m-0"><%= news.title %></h3>
+        <div class="btn-group" role="group">
+            <a class="btn btn-danger btn-sm" href="/news" role="button">Back</a>
+        </div>
+    </div>
+    <div>
+        <p class="mb-2">Category: <%= category.name %></p>
+    </div>
+    <div class="desc mb-3">
+        <p class="m-0"><%= news.description %></p>
+    </div>
+    <hr>
+    <div class="comments">
+        <h5>Comments //</h5>
+        <ul class="list-group mb-2">
+            <% if (news.comments.length > 0) { %>
+                <% for (var i = 0; i < news.comments.length; i++) { %>
+                    <li data-id="<%= news.comments[i]._id %>" class="list-group-item justify-content-between">
+                        <%= news.comments[i].content %>
+                        <span class="badge badge-danger" role="button"><i class="fa fa-times"></i></span>
+                    </li>
+                <% } %>
+            <% } else { %>
+                <p class="text-center">- No Comments! -</p>
+            <% } %>
+        </ul>
+        <form id="addCommentForm">
+            <input type="hidden" name="news_id" value="<%= news._id %>">
+            <div class="form-group">
+                <textarea class="form-control" name="content" rows="5" placeholder="Add a comment..." required></textarea>
+            </div>
+            <button role="button" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+</div>
