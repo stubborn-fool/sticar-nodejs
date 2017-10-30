@@ -151,6 +151,29 @@ module.exports = function(app) {
         }
     })
 
+    app.post('/news/search', urlencodedParser, function(req, res) {
+        News.find({
+            $or: [
+                {title: new RegExp(".*" + req.body.search.replace(/(\W)/g, "\\$1") + ".*", "i")},
+                {description: new RegExp(".*" + req.body.search.replace(/(\W)/g, "\\$1") + ".*", "i")}
+            ]
+        }).
+        exec(callback)
+
+        function callback(err, news) {
+            if (err) throw err
+
+            console.log(req.body.search)
+            console.log(news)
+            res.render('pages/news-search', {
+                title: 'Search News',
+                pageUrl: 'news',
+                news: news,
+                data: req.body
+            })
+        }
+    })
+
     app.get('/api/news', function(req, res) {
         News.find({}).
         exec(callback)
@@ -173,14 +196,6 @@ module.exports = function(app) {
             if (err) throw err
             res.json(data)
         }
-    })
-
-    app.post('/news/search', urlencodedParser, function(req, res) {
-        res.render('pages/news-search', {
-            title: 'Search News',
-            pageUrl: 'news',
-            data: req.body
-        })
     })
 }
 
